@@ -1,0 +1,688 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Gruppenprojekt RPG</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="140b426d-c4e9-804b-adb5-ea3468c26e55" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1607337202714-a88f7abbdee7?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="https://www.notion.so/icons/die5_gray.svg"/></div><h1 class="page-title">Gruppenprojekt RPG</h1><p class="page-description"></p></header><div class="page-body"><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-8042-9e22-e06d2a97a3e6"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/info-alternate_green.svg"/></div><div style="width:100%"><h1 id="141b426d-c4e9-80d9-963b-e18074e6dfe4" class="">Notizen</h1><p id="140b426d-c4e9-805f-bfb4-decb95262f23" class=""><strong>Räume</strong></p><ol type="1" id="140b426d-c4e9-8073-8996-f4f4d69deaf6" class="numbered-list" start="1"><li><strong>Lagerraum</strong>: Items wie Verbandszeug, Schlüssel, oder improvisierte Waffen (Schraubenschlüssel, Glasflasche).</li></ol><ol type="1" id="140b426d-c4e9-80ea-9c91-df5272bdcf9e" class="numbered-list" start="2"><li><strong>Datenraum</strong>: Zugang zu Informationen über die Experimente (Hintergrundgeschichte).</li></ol><ol type="1" id="140b426d-c4e9-8099-94ed-e2299e7671b2" class="numbered-list" start="3"><li><strong>Wachraum</strong>: Begegnung mit einem Wachmann oder Überwachungssystem (Kampf oder Stealth notwendig).</li></ol><ol type="1" id="140b426d-c4e9-8085-b316-d79f07a54f0b" class="numbered-list" start="4"><li><strong>Belüftungsschacht</strong>: Ein alternativer, aber riskanter Weg durch das Gebäude.</li></ol><ol type="1" id="140b426d-c4e9-80f3-a758-e5d48f05ff33" class="numbered-list" start="5"><li><strong>Toiletten</strong>: Ein bisschen eklig, aber vielleicht bietet sich eine alternative Route<br/>(Es wäre lustig, wenn man sich dort im Spiegel betrachten könnte und der Spieler so erfährt, wie man aussieht)<br/></li></ol><p id="141b426d-c4e9-8089-85c2-d6422de1500e" class=""><strong>Health Points</strong><br/>Du hast vier Health Points ◆◆◆◆ die durch biolumineszente Flüssigkeit regeneriert werden können. Diese Flüssigkeit ist jedoch sehr selten.<br/></p><p id="141b426d-c4e9-80db-9317-e20eb9bb1387" class=""><strong>Fähigkeiten</strong></p><p id="141b426d-c4e9-80d6-bcf5-f3700aa40fbf" class="">Du hast die Fähigkeit “Psy-Power”, mit der du elektrische Energie erzeugen oder beeinflussen kannst. Du kannst diese Fähigkeit nur drei Mal benutzen, dann musst du deine Kräfte regenerieren. Energie Drinks und Kaffee regenerieren deine Kräfte.</p><p id="140b426d-c4e9-801a-9fe6-e8a16fe66997" class=""><strong>Hürden</strong><div class="indented"><ul id="140b426d-c4e9-8007-a0cc-ea8523c3e0d0" class="bulleted-list"><li style="list-style-type:disc">Türen könnten verschlossen sein und erfordern einen Schlüssel oder Code.</li></ul><ul id="140b426d-c4e9-80e7-b6ed-f6323244d913" class="bulleted-list"><li style="list-style-type:disc">Kameras könnten deaktiviert oder umgangen werden müssen.</li></ul><ul id="140b426d-c4e9-8096-b9b1-e20118d0d8b5" class="bulleted-list"><li style="list-style-type:disc">Gegner wie Wissenschaftler, Roboter oder Wachhunde könnten den Spieler aufhalten.</li></ul><ul id="140b426d-c4e9-8047-b274-f76971b8428f" class="bulleted-list"><li style="list-style-type:disc">Psy-Power kann leer sein, wenn man sie unbedingt braucht</li></ul></div></p></div></figure><h1 id="140b426d-c4e9-80db-a3d3-fac2c391df5c" class="">Labor: Szene 1</h1><p id="140b426d-c4e9-8064-8f44-feed7ba0c99b" class="">Dunkelheit. Du fühlst dich benommen, noch wie im Halbschlaf wirst du dir deines Körpers bewusst: ein Summen in den Ohren, ein Gefühl wie Watte im Kopf, dein Rücken schmerzt vom langen Liegen. Doch da ist noch etwas - du spürst etwas an deinen Handgelenken. Etwas wie ein Druck, aber auch ein statisches Prickeln. Du öffnest deine Augen und blickst in ein schmerzhaft grelles Licht, blinzelst, bis du dich an die Helligkeit gewöhnt hast.</p><p id="140b426d-c4e9-8063-9030-e00debde0a15" class="">Du befindest dich in einem weißen, steril aussehendem Raum mit ein paar Monitoren und seltsamen Gerätschaften die preisgeben, dass du dich in einem Labor befindest. Du hörst das Surren von Maschinen.</p><p id="140b426d-c4e9-8005-baf8-d8ec1067e3ce" class="">Du siehst an deinem bleichen, auf einer Pritsche liegendem Körper hinab. Deine Handgelenke sind mit Energie-Schellen gefesselt, die seicht flackern als du versuchst, dich zu bewegen.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-80db-a1d9-cd34d5ea8206"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="140b426d-c4e9-8003-8897-d2c607eda1f7" class="">Aktion 1</h3><p id="9e2ec11e-f6bd-479a-9af5-e55f2c22a895" class="">Versuchen, die Energie-Schellen gewaltsam zu öffnen.<div class="indented"><p id="140b426d-c4e9-805f-8288-cfb9ed8aae7a" class="">→ Du rüttels an den schellen und krümmst und biegst dich. Das Energiefeld wird gestört, aber nicht unterbrochen, stattdessen wird ein heulender Alarm ausgelöst.</p><p id="140b426d-c4e9-802f-aad1-ebf137913e4b" class=""><mark class="highlight-red">Likeliness of survival: mehr Feinde</mark></p></div></p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-80d4-a108-cc6e64dfa142"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="dd59d3e5-f398-4a35-8887-d0306f30ef98" class="">Aktion 2</h3><p id="80d328a9-4b5a-48e8-9ae4-d6250d3e2136" class="">Umsehen<div class="indented"><p id="1a5c80ba-10db-4d74-bc52-acd1b8105e2e" class="">→ Du bemerkst ein kleines, unscheinbares Gerät auf einem niedrigen Tisch in deiner Nähe, das die Energiequelle zu den Schellen sein muss.</p></div></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-80bf-a4b6-e12ed0a6faa1"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="efc4cc88-0dfe-49c3-b9e6-c53a07a9c51b" class="">Aktion 2a</h3><p id="98b4ba49-73dc-4745-b1ac-6e54b7fcd1d0" class="">Nichts tun <div class="indented"><p id="140b426d-c4e9-80df-af9e-fb647278df39" class="">→ zurück zu Aktion 1</p></div></p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-8037-8123-ea8536d6b92d"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="6925a287-ff58-4823-9344-01cc4c0f72ea" class="">Aktion 2b</h3><p id="3527664f-306c-4194-8a94-6b1246fba1cc" class="">Energie konzentrieren<div class="indented"><p id="140b426d-c4e9-8090-adc1-ea3a12458212" class=""><br/>→ Du nimmst all deine Käfte zusammen und konzentrierst deine Gedanken einzig und allein auf die Energiequelle. Je mehr du dich fokussierst, desto schwächer fühlst du dich. <br/></p><p id="140b426d-c4e9-80c9-80c3-c7fda839a44f" class="">Doch deine angeborene Fähigkeit elektrische Energie zu erzeugen und zu beinflussen, erfüllt ihren Zweck: mit einem Surren stellt sich das Gerät abrupt ab und die Energie-Fesseln verschwinden, als wären sie nie da gewesen.</p><p id="140b426d-c4e9-80be-a877-d4cb16357809" class=""><mark class="highlight-yellow">Likeliness of survival: normal</mark><br/><br/><mark class="highlight-red">Psy-Power -1</mark></p></div></p></div></figure></div></figure><p id="140b426d-c4e9-80f0-a1b3-db38608a9a97" class=""><mark class="highlight-gray">Mögliche Items im Laborraum: <br/>Laborkittel: stealth, weniger Feinde<br/></mark></p><h1 id="140b426d-c4e9-80fc-a30d-c773d7333ca8" class="">Labor: Szene 2</h1><p id="140b426d-c4e9-806c-a1ef-e20ddf6deaf5" class="">Langsam richtest du dich auf, die Muskeln schmerzen von der langen Inaktivität. Wie lange bist du schon hier und was ist hier passiert? Deine nackten Füße berühren den kalten Metallboden. Der Raum ist still, bis auf das monotone Piepen der Monitore. Dein Blick fällt auf eine Konsole nahe der Tür. Sie blinkt träge, als würde sie darauf warten, aktiviert zu werden. </p><p id="140b426d-c4e9-801e-a7c3-e80e6c21edeb" class="">Du gehst auf die Konsole zu und nimmst sie unter Augenschein.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-80ef-9e72-edaa02e76263"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="77a8cc22-de9b-46ac-8473-30d5b8f1ca99" class="">Aktion 1</h3><p id="da655924-e630-4c96-9128-ab9e79079b9e" class="">Benutze deine Psy-Kräfte, um die Tür zu öffnen<div class="indented"><p id="af282c5d-c6b0-445d-83f5-6029a6108af0" class="">→ Du konzentrierst deine Kräfte so lange, bis das kleine Status-Licht der Konsole grün aufblinkt, kurz piept und die Tür sich öffnet.</p><p id="f8026a4c-3cc6-41c4-a476-75bdc13c5739" class=""><mark class="highlight-yellow">Likeliness of survival: normal</mark><br/><br/><mark class="highlight-red">Psy-Power -1</mark></p></div></p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-80e7-a697-e143574fff53"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="43906a07-8167-4930-becb-a631891a3a55" class="">Aktion 2</h3><p id="c7dd37bd-e52a-4bad-87b3-1c4cabcbe284" class="">Irgendeinen Knopf drücken <div class="indented"><p id="8e718525-9ef9-4110-b14a-f742807cebdc" class="">→ Zufallsereignis 1: Du kannst deinen Instinkten vertrauen: die Tür öffnet sich.</p><p id="140b426d-c4e9-8037-a1c9-d80c73cb3935" class="">→ Zufallsereignis 2: Nichts passiert</p><p id="e8764c63-ad4a-4dee-b831-21a6f8454cdd" class=""><mark class="highlight-yellow">Likeliness of survival: normal</mark></p></div></p></div></figure><p id="140b426d-c4e9-80d4-9af2-c7591535b9af" class="">Die Tür gleitet auf, und kalte Luft weht dir entgegen. Der Gang vor dir ist schmal, schwach beleuchtet von flackernden Neonröhren. Schritte hallen aus der Ferne – irgendwo ist noch jemand hier. Du musst leise sein. Vorsichtig schleichst du den Gang entlang.</p><h1 id="140b426d-c4e9-802d-a9e8-cc904f6e4dca" class="">Raum 32B</h1><p id="140b426d-c4e9-8011-a35f-f98b40fed80b" class="">Du gehst den sterilen Flur entlang, vorbei an geschlossenen Türen und surrenden Maschinen. Schließlich erreichst du eine Tür mit der Aufschrift “32B”.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-80c1-b718-e95dc467e6ff"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="fc60f287-2dd0-4164-85de-19a6ee300e59" class="">Aktion 1</h3><p id="140b426d-c4e9-804b-ab24-c5943f2486cb" class="">Versuchen, die Tür zu öffnen</p><p id="140b426d-c4e9-8064-9ff5-e73064a03dac" class="">→ Zu deiner eigenen Überraschung kannst du die Tür einfach öfnen und betrittst den Raum.<div class="indented"><p id="140b426d-c4e9-80f4-aca7-d661d07a4e3f" class="">Die Tür zu Raum 32B gleitet mit einem leisen Zischen auf. Du trittst ein und findest dich in einem fensterlosen Raum, der von einem kühlen, bläulichen Licht erfüllt ist. Die Quelle des Lichts sind an der Decke montierte Streifen, die summend flackern.<br/>Entlang der Wände reihen sich metallene Schränke und Regale aneinander, vollgestellt mit Geräten, deren Zweck dir unbekannt ist. Einige glühen schwach, andere sind still und verstaubt.<br/></p><p id="140b426d-c4e9-80e9-b772-e6b54150d352" class=""><mark class="highlight-gray">Hier könnte es Items wie Schraubenzieher, Datenträger und Dose Energy Drink (Statusveränderung, Psy-Power +1?)  geben</mark></p></div></p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-80e4-8f18-efc092869852"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="19829e6f-dfe8-4cb3-aba9-0a7b3d080031" class="">Aktion 2</h3><p id="140b426d-c4e9-80b9-9ad7-ef5a2d649d26" class="">Ignorieren und weiter gehen</p></div></figure><h1 id="140b426d-c4e9-80f8-b203-c56e0c2d0adc" class="">Raum 32A (Lagerraum)</h1><p id="141b426d-c4e9-80c9-a60a-e958980d6d7b" class="">Du folgst einem schmaleren Seitengang, dessen Beleuchtung leicht flackert. Eine schwere, unscheinbare Tür mit einem verblassten Schild „Lagerraum“.</p><div id="141b426d-c4e9-80a3-87e9-c7cbdffffba3" class="column-list"><div id="141b426d-c4e9-80a6-adb5-f62f2b38d4dc" style="width:50%" class="column"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="141b426d-c4e9-80b4-9cae-e6d296ef0508"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="b2002c4c-722d-4d77-93ad-a4c376a12ac2" class="">Aktion 1</h3><p id="141b426d-c4e9-808c-9b57-cd4a1e2a95ae" class="">Tür öffnen</p><p id="141b426d-c4e9-8009-b745-e010aa570822" class="">⬇️</p></div></figure></div><div id="141b426d-c4e9-80b0-af7a-f87e41dc7e09" style="width:50%" class="column"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="141b426d-c4e9-8027-b789-dca9ac3439d5"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="15a07a96-48e3-4867-aae6-d09514947655" class="">Aktion 2</h3><p id="6e32ed3c-e59c-4f55-9ecf-07f9a5414207" class="">Ignorieren</p></div></figure></div></div><p id="140b426d-c4e9-80a7-8b85-d2770590ff49" class="">Die schwere Metalltür des Lagerraums öffnet sich mit einem tiefen Knarren. Ein schwacher Geruch nach Öl und Staub schlägt dir entgegen. Der Raum ist groß und karg beleuchtet; ein einzelnes Licht an der Decke schwankt leicht und wirft tanzende Schatten auf die Wände.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-8013-865a-d4a96f137b73"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="653f3b80-0597-4b04-940c-cb10747c806c" class="">Aktion 1</h3><p id="140b426d-c4e9-80fd-bae2-ed279f4399aa" class="">Erkunden <div class="indented"><p id="140b426d-c4e9-808e-9d34-f124f1c90aa5" class="">→ Reihen von Metallregalen durchziehen den Raum, gefüllt mit Kisten, Behältern und losen Gegenständen. Einige der Kisten sind verschlossen, während andere offenstehen, ihren Inhalt unordentlich verstreut. Du siehst Drähte, Energiezellen und kleinere technische Bauteile, die dir unbekannt vorkommen.</p></div></p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-8077-a5ab-f29fa1fe5009"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="778ef34a-e60c-42df-a5d6-f02281500337" class="">Aktion 2</h3><p id="6fdfe4d2-4779-49f4-a2b9-666b53107ee9" class="">Ignorieren und weiter gehen</p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="141b426d-c4e9-804a-adff-f2dffc33b3d6"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="9801e31a-42dd-46d0-aa7d-765f309ebfd9" class="">Aktion 3</h3><p id="141b426d-c4e9-80a1-9a23-e5e65ad9675e" class="">Auf einem Beistelltisch fällt dir eine kleine Glasflasche ins Auge, die weiß leuchtet. Sie hat ein Label auf dem in sauberer Handschrift steht: “biolumineszente Flüssigkeit”.</p><div id="141b426d-c4e9-80c3-bd13-f8806aab4e7a" class="column-list"><div id="344a6b92-6c20-4323-82e9-2d82976ae073" style="width:50%" class="column"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2deaed5b-39d2-4bfb-9574-dfe5c0fd72f7"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="8f6d9ab8-258b-4442-a58c-8d685de8f4f6" class="">Aktion 3a</h3><p id="e41071a8-7004-4b09-af97-41745c050005" class="">Trinken</p><p id="10adc00b-2989-484c-aa21-faafba2cc87b" class="">→ Du hast einen Health Point regeneriert</p><p id="141b426d-c4e9-8009-901c-cfcdfd089d59" class=""><mark class="highlight-teal">HP +1</mark></p></div></figure></div><div id="d89755bc-f542-4038-becf-5a6281fd0628" style="width:50%" class="column"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="e29bcf2f-95e4-4589-a96c-a03cef41c6d7"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="eeb35977-601f-47e3-a1db-19d53a86bfb7" class="">Aktion 3b</h3><p id="5f8aad51-3bed-49cc-b5cf-e61508c5cd6a" class="">Ignorieren</p></div></figure></div></div></div></figure><h1 id="140b426d-c4e9-80eb-ac6c-f6513ff29958" class="">Raum 22</h1><p id="140b426d-c4e9-809e-a128-d55ecb0d3a0d" class="">Ein verzweigter Korridor führt dich zu einer Tür, deren Sicherheitsdisplay flackert, als ob das System instabil wäre. Die Markierung darüber lautet „Datenraum – autorisierter Zugang“.</p><div id="141b426d-c4e9-8029-87a5-db6855a3c8a3" class="column-list"><div id="e1be82bc-611a-4145-967a-ace8da2cb081" style="width:50%" class="column"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="54184358-a222-42ff-94bf-a2b19917ce71"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="c1e1c676-8bf0-4f50-954d-07ca1eeaaba5" class="">Aktion 1</h3><p id="8d6a8555-12ee-4f89-a8a9-991b2ec1cd44" class="">Psy-Power benutzen, um das Sicherheitsschloss zu umgehen.</p><p id="141b426d-c4e9-8003-9c58-cf4ef11aa752" class=""><mark class="highlight-red">Psy-Power -1</mark></p><p id="173ba29a-4a29-40f0-b17c-299c0d6d8b08" class="">⬇️</p></div></figure></div><div id="145b7efb-0f08-47fc-9b31-2cf220fa7a90" style="width:50%" class="column"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="345988f0-fab0-47d4-9aa8-cc515f5d5c18"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="291b0215-3d4b-449e-8a68-5d55df99122a" class="">Aktion 2</h3><p id="14c36f36-594d-4bd2-bb7c-09e599783b97" class="">Ignorieren</p></div></figure></div></div><p id="141b426d-c4e9-805b-b6dd-d503f4ef4856" class="">Die Tür gleitet lautlos zur Seite und gibt den Blick auf einen kleinen, klaustrophobisch wirkenden Raum frei. Neonröhren an der Decke werfen ein kaltes, steriles Licht, das von den glatten, metallischen Oberflächen reflektiert wird. Der Raum ist von summenden, wandmontierten Servermodulen und blinkenden Kontrolltafeln gesäumt. Kabel in dicken Bündeln winden sich wie Adern über den Boden und verschwinden in die Wände.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-8043-870e-d8f5603d213a"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="f195cc6c-3d2a-4e12-ab6f-3c035c0b22f4" class="">Aktion 1</h3><p id="140b426d-c4e9-80c1-8398-f2dc5ae0c18d" class="">Hineingehen<div class="indented"><p id="140b426d-c4e9-80ec-b3e8-e4bb485fc610" class="">→ Die Temperatur im Raum ist spürbar höher als in den anderen Bereichen des Labors, und die Luft riecht leicht nach Elektronik – ein Gemisch aus warmem Plastik und ozonhaltiger Energie.</p><p id="140b426d-c4e9-80f1-a4c7-ff1850af60da" class="">In der Mitte des Raums steht eine einzelne Konsole, deren Interface aktiv ist. Der Bildschirm zeigt ein Login-Fenster mit einer Tastatur darunter. Neben der Konsole liegt ein kleines Gerät – eine Art tragbarer Datenspeicher. Es scheint unbenutzt, doch es blinkt, als würde es auf eine Verbindung warten.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-80e2-85fd-f98c1f433b14"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="140b426d-c4e9-8054-8a87-d3e0bc94f26b" class="">Aktion 1a</h3><p id="140b426d-c4e9-80e9-8e72-f272dcb0dc0c" class="">Näher untersuchen</p><p id="140b426d-c4e9-80be-be8d-ccec1886e747" class="">→ Auf einer der Konsolen blinkt eine Meldung auf: „Systemeinstellungsmenü bereit. Eingabe erforderlich.“ Es könnte riskant sein, sich einzuloggen, aber möglicherweise enthüllt das System wichtige Informationen über das Labor oder öffnet Zugänge zu anderen Bereichen.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-80d8-82a6-cd82d8b11f41"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="140b426d-c4e9-8044-b894-f5309fbddf6d" class="">Aktion 1b</h3><p id="140b426d-c4e9-802d-9caa-ddbb27ef589f" class="">Psy-Kräfte nutzen, um dich an der Konsole einzuloggen.</p><p id="140b426d-c4e9-8038-abbf-c541a9bf134c" class=""><mark class="highlight-gray">→ Hier kann man etwas über den Charakter erfahren</mark></p><p id="140b426d-c4e9-80a6-990b-cce1e1aab906" class=""><mark class="highlight-red">Psy-Power -1</mark></p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-802b-be35-c95e86f78183"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="a0ec271c-838a-4d2e-81c7-507764cd1d15" class="">Aktion 1c</h3><p id="84ea6f28-8209-4f8d-91b1-ca33e6ee8bc7" class="">Zurück gehen</p></div></figure></div></figure></div></p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-8047-b4ee-c0aab8d13611"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="48672cab-9372-4de4-8dc6-dc7a4735a2ae" class="">Aktion 2</h3><p id="140b426d-c4e9-8053-8728-e4b8b26fe7ce" class="">Raum verlassen</p></div></figure><h1 id="140b426d-c4e9-8028-bc44-d85c4f9066d4" class="">Raum 00</h1><p id="141b426d-c4e9-8031-9999-fe8d323efff6" class="">Am Ende des Flurs findest du eine unscheinbare Tür, die nicht verschlossen zu sein scheint. Ein verblasstes Schild weist darauf hin, dass dies die Toiletten sind.</p><div id="141b426d-c4e9-8042-be6e-fc2bbd7732b0" class="column-list"><div id="a4d3208e-777c-4579-b644-ade9ac777d65" style="width:50%" class="column"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="4f0b9295-2461-4a8f-8163-70d7c5e0d378"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="010cce1d-0470-4f54-b2a8-618c89894e11" class="">Aktion 1</h3><p id="f30cb26e-b674-4691-b2ad-ba245fd0f2cf" class="">Tür öffnen</p><p id="eb1c9305-ac29-491b-a1f1-0bf0e3acf3ac" class="">⬇️</p></div></figure></div><div id="951444e2-d82f-4bc3-aba4-7ddf726c23bb" style="width:50%" class="column"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="5098895b-7065-4868-940d-514768adfa41"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="49a9ff95-ee1c-4724-9dcc-dd4441605582" class="">Aktion 2</h3><p id="361d503f-af80-43c8-9237-780fbd47a313" class="">Ignorieren</p></div></figure></div></div><p id="140b426d-c4e9-804b-955e-f7effd4faa8f" class="">Du öffnest die Tür zu den Toiletten, und ein muffiger Geruch schlägt dir entgegen, gemischt mit dem scharfen Geruch von Reinigungsmitteln. Der Raum ist klein und schlicht: eine Reihe von Kabinen an einer Wand, daneben ein Waschbecken mit einem trüben Spiegel, der durch Zeit oder Vernachlässigung leicht angelaufen ist. Eine schwache Neonröhre flackert über dir, und das Geräusch eines tropfenden Wasserhahns durchbricht die Stille.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-8093-96a8-d9391cf35cf3"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="d6b53ada-f209-4599-9c82-60be3ab0a419" class="">Aktion 1</h3><p id="140b426d-c4e9-805e-ba08-fa1f04626073" class="">Hinein gehen<div class="indented"><p id="140b426d-c4e9-80f9-9254-de1eee933075" class="">→ Beim Betreten fällt dir auf, dass eine der Kabinentüren halb geöffnet ist. Drinnen scheint der Boden nicht richtig eben zu sein, als würde sich etwas darunter befinden. Die übrigen Kabinen sind leer, bis auf eine, deren Tür sich nicht öffnen lässt – sie klemmt oder ist abgeschlossen.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-80be-8250-fa9892dfb537"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="6ff30c9f-45a4-4537-92bc-e01db76422d4" class="">Aktion 1a</h3><p id="140b426d-c4e9-8067-8074-dd0e5ad48b42" class="">Benutze Psy-Kräfte, um die Tür zu öffnen<div class="indented"><p id="140b426d-c4e9-808c-9b1c-ff82da6832a8" class="">→ Du findest eine leere Rolle Klopapier.</p><p id="140b426d-c4e9-80df-a072-c3d9a6768ddd" class=""><mark class="highlight-red">Psy-Power -1</mark></p></div></p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-809e-a86e-f1e3a8ee45b7"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="520e373b-c454-44cd-8742-d9c1d709d588" class="">Aktion 1b</h3><p id="140b426d-c4e9-80b2-9015-c8343e790046" class="">Zurück<div class="indented"><p id="140b426d-c4e9-8004-a1b8-d6b992a4ba19" class="">→ Als du dich umdrehst siehst du, dass am Waschbecken ein Spind angebracht ist, der etwas außerhalb deiner Reichweite zu sein scheint. Du bemerkst, dass die Lüftungsöffnung an der Decke ungewöhnlich groß ist, gerade groß genug, dass jemand hindurchpassen könnte. Das Lüftungsgitter ist locker, und darunter ist Staub auf dem Boden verstreut, als wäre es vor Kurzem bewegt worden.</p><p id="141b426d-c4e9-806e-85c6-ecd98f44feb2" class="">⬇️</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-806a-9e6e-c95ba193fd24"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="cd1047c5-70ad-47a9-90a4-8374d2ea3bc4" class="">Aktion 2</h3><p id="140b426d-c4e9-8016-a020-cf476adb99e0" class="">Untersuchen<div class="indented"><p id="140b426d-c4e9-80d0-8d5f-d060afe9d692" class="">→ Ein kalter Luftzug weht dir entgegen, als du näher an das Gitter trittst. Es könnte eine direkte Verbindung zu einem anderen Bereich des Gebäudes sein – oder ein riskanter Umweg in unbekanntes Terrain.</p><p id="141b426d-c4e9-8087-9b17-db7c289babcc" class="">⬇️</p><h1 id="141b426d-c4e9-80ee-9b26-e23da88ff8cf" class="">Lüftungsschacht</h1></div></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-8048-b7cc-dde782f5196f"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="29d8a7c6-98fb-4bf2-ac65-bf9e30374116" class="">Aktion 2a</h3><p id="141b426d-c4e9-805c-b31d-e73d4b2d2b91" class="">Du kletterst vorsichtig in die Lüftungsöffnung, die Dunkelheit des engen Schachts verschluckt dich fast vollständig. Der metallische Geruch und das Echo deiner Bewegungen begleiten dich, während du dich mühsam vorwärts schiebst. Zurück kannst du nicht mehr – der Schacht ist zu eng, um dich umzudrehen.</p><p id="141b426d-c4e9-803f-92fb-e05d0f98ab86" class="">Nach einer gefühlten Ewigkeit erreichst du das Ende des Schachts. Vor dir öffnet sich ein Raum, doch der Schacht mündet knapp unter der Decke. Du hältst inne, das Herz klopft in deiner Brust, als du darüber nachdenkst, wie du hier sicher hinunterkommst. Es bleibt dir nichts anderes übrig, als einen Weg nach unten zu finden.</p><p id="140b426d-c4e9-80bf-aa68-fd32948ca875" class="">→ Zufallsereignis: Du lässt dich fallen und steckst es gut weg. Oder du warst schon schwach und verletzt dich (likeliness of survival sinkt)</p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-8092-bf5b-f7c0c700d616"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="8daa9bf8-6d52-488b-ba6c-04924fce32dc" class="">Aktion 2b</h3><p id="33775474-4d09-44e9-b54a-59294ff543e9" class="">Zurück auf den Flur gehen</p></div></figure></div></figure></div></p></div></figure></div></p></div></figure><h1 id="140b426d-c4e9-8070-8487-cf71d22a701b" class="">Raum 404</h1><p id="141b426d-c4e9-801d-95ff-d7cd7aa78057" class="">Ein breiter Gang führt dich zu einer gewaltigen Tür, deren metallische Oberfläche mit Sicherheitssystemen versehen ist. Ein Summen in der Luft verrät, dass du nah an deinem Ziel bist – der Weg nach draußen.</p><div id="141b426d-c4e9-804f-a7ad-d73da2138d1c" class="column-list"><div id="ddbec27d-b99e-4b44-8841-395b0afcfe86" style="width:50%" class="column"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="e24b7a2e-065b-47fb-81ce-f487fc68cbe9"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="408bd6c9-9332-48ea-88d0-72f8f51dad23" class="">Aktion 1</h3><p id="75ca3df2-0659-475c-9be7-804ce6acbd68" class="">Tür öffnen</p><p id="2785d2a1-3d3b-4294-8177-73f24c468433" class="">⬇️</p></div></figure></div><div id="59c1c64e-f0d6-43b3-9282-59b2753b621c" style="width:50%" class="column"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="21b89e7d-a628-4aa7-8a91-b96d9efb6f5e"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="f0c97e0d-e849-4adf-a015-b27505a45193" class="">Aktion 2</h3><p id="7fbabb97-6987-49a7-be53-096df1a77168" class="">Ignorieren</p></div></figure></div></div><p id="140b426d-c4e9-8034-9e8c-eae93bdddc6e" class="">Du trittst durch eine massive, versiegelte Tür, die sich mit einem schwerfälligen Zischen öffnet. Der Raum dahinter ist groß und fast leer – eine sterile Kuppel aus kühlem Metall, deren Wände von sanft pulsierenden Lichtstreifen durchzogen sind. Am gegenüberliegenden Ende führt ein schweres Tor ins Freie. Du kannst die Nacht erahnen, eine Brise strömt durch feine Ritzen in der Tür, und mit ihr der Geruch von Erde und Freiheit.</p><p id="141b426d-c4e9-802c-b506-f9932ead6f5c" class=""><br/>Neben dem Tor befindet sich eine Konsole. Ein rotes Licht blinkt darauf – ein Signal, dass der Zugang verriegelt ist. Neben der Konsole liegt ein verschmiertes Tablet.<br/></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-80e9-a11e-e26930ff3303"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="eafbeec1-1bef-481d-8d2a-338f9eaf230a" class="">Aktion 1</h3><p id="140b426d-c4e9-8020-92c0-f8f643c09506" class="">Tablet Einschalten<div class="indented"><p id="140b426d-c4e9-80a9-96b4-c1c07d940a76" class="">→ Ein Status Log erscheint auf dem blau leuchtenden Bildschirm. </p><p id="140b426d-c4e9-809f-a2f5-dad11e993912" class=""><em>„Subjekt X-14 –  Fähigkeitenanalyse gescheitert.“</em></p><p id="140b426d-c4e9-8050-8cf8-c1ea19dac01c" class="">Du hältst inne. Du bist ein Wesen, das sie nicht verstehen konnten, und genau deshalb bist du hier gelandet.</p><p id="140b426d-c4e9-80b0-8a05-cdbe45c8d4e9" class="">Du betrachtest deine Hände – sie schimmern sanft, sondern sind schlank, mit leichten Reflexionen von Farbe, die sich je nach Licht ändern.</p></div></p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-80f1-91bc-c06537dbd8f8"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="12a7c590-4d80-44f4-97b7-f9367fccbe05" class="">Aktion 2</h3><p id="a6e69e90-ecc6-4a5d-8965-d74c91d301dc" class="">Ignorieren</p></div></figure><p id="140b426d-c4e9-803e-b0c4-f2048efe302f" class="">Zwischen dir und der Freiheit ist eine Barriere: ein in blau- und violett scheinendes, elektrisch geladenes Energiefeld, das wie eine Mauer aus Licht den Weg versperrt. Das Summen ist ohrenbetäubend, und die Hitze, die das Feld ausstrahlt, ist spürbar selbst aus der Entfernung.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-80bb-b74a-f2b3eefa1b51"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/new-alert_yellow.svg"/></div><div style="width:100%"><h3 id="4acc51f1-4c6b-42f8-8d7c-220f3c750d2e" class="">Aktion 1</h3><p id="140b426d-c4e9-80d8-9e66-f1c5be1ccd4c" class="">Nutze deine Psy-Power, um das Energiefeld zu überladen.</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="140b426d-c4e9-8046-a7a5-f9fddbc95504"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/trophy_yellow.svg"/></div><div style="width:100%"><h3 id="140b426d-c4e9-8055-b79e-ec4979e4b439" class="">Ende 1</h3><p id="140b426d-c4e9-80f3-a0ff-cf215aa0e7d1" class="">Du fokussierst dich, und die Energie in deinem Inneren beginnt zu pochen, ein heißes, vertrautes Gefühl. Du hebst deine Hände, und Blitze tanzen von deinen Fingerspitzen. Die Energie schießt ins Feld, verstärkt dessen Schimmern, bis es plötzlich explodiert – ein grelles Licht, dann Stille. Der Weg ist frei.<br/><br/></p><p id="140b426d-c4e9-8014-bd47-e2e70d59377a" class="">Du trittst hinaus in die kühle Nacht, und die Dunkelheit umarmt dich wie ein vertrauter Freund. Über dir erstreckt sich ein endloser Teppich aus funkelnden Sternen, die zu dir zu flüstern scheinen. Doch zwischen ihnen sind Lichter, die sich bewegen – sanft und zielstrebig, wie ein Versprechen.</p><p id="140b426d-c4e9-805c-8ed6-e5b4f83b730f" class="">Es dauert einen Moment, bis du sie erkennst: die vertrauten Lichter deines Raumschiffs. Sie gleiten durch die Dunkelheit, direkt auf dich zu. Dein Herz schlägt schneller. Ein Gefühl von Sicherheit durchströmt dich und du weißt, alles wird gut.</p></div></figure><p id="140b426d-c4e9-80b9-b7de-d5b074d0c38d" class="">
+</p></div></figure><p id="140b426d-c4e9-804c-8126-c0f0c204e392" class=""><mark class="highlight-gray">Wenn man keine Psy-Power mehr hat, muss man zurück und in den anderen Räumen nach Items suchen, um sie wieder aufzufüllen?</mark></p><p id="140b426d-c4e9-80e3-b26b-c46fd6f70896" class="">
+</p><p id="140b426d-c4e9-8026-858d-f9740fecb495" class="">
+</p><p id="140b426d-c4e9-8061-953b-fb201d76a4e5" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
